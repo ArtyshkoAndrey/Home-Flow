@@ -80,15 +80,11 @@ return [
   |
   */
 
-  'locale' => 'en',
+  'locale' => 'ru',
 
   'locales' => [
-    'ru' => 'RU',
-    'en' => 'EN',
-    'es' => 'ES',
-    'fr' => 'FR',
-    'pt-BR' => 'BR',
-    'zh-CN' => '中文',
+    'ru' => 'Русский',
+    'en' => 'English',
   ],
 
   /*

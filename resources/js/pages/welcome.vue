@@ -1,4 +1,4 @@
-<template>
+  <template>
   <div>
     <div class="top-right links">
       <template v-if="authenticated">

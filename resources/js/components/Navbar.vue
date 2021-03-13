@@ -34,6 +34,14 @@
               </router-link>
 
               <div class="dropdown-divider" />
+
+              <router-link :to="{ name: 'home.index' }" class="dropdown-item pl-3">
+                <fa icon="home" fixed-width />
+                {{ $t('home_smart') }}
+              </router-link>
+
+              <div class="dropdown-divider" />
+
               <a href="#" class="dropdown-item pl-3" @click.prevent="logout">
                 <fa icon="sign-out-alt" fixed-width />
                 {{ $t('logout') }}
