@@ -1,7 +1,7 @@
 <template>
   <div class="row">
     <div class="col-md-3">
-      <card title="Меню настроек" class="settings-card">
+      <card :title="$t('menu')" class="settings-card">
         <div class="list-group">
           <router-link v-for="tab in tabs"
                        :key="tab.route"
@@ -36,7 +36,7 @@ export default {
       return [
         {
           icon: 'home',
-          name: 'Главная',
+          name: this.$t('index'),
           route: 'home.index'
         }
       ]

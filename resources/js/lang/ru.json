@@ -13,7 +13,7 @@
   "email": "Email",
   "remember_me": "Запомнить меня",
   "password": "Пароль",
-  "forgot_password": "Забилы пароль?",
+  "forgot_password": "Забыли пароль?",
   "confirm_password": "Подтвердите пароль",
   "name": "Имя",
   "toggle_navigation": "Переключить навигацию",
@@ -36,5 +36,8 @@
   "resend_verification_link": "Отправить ссылку для подтверждения еще раз?",
   "failed_to_verify_email": "Не удалось подтвердить электронную почту.",
   "verify_email_address": "Мы отправили вам электронное письмо со ссылкой для подтверждения.",
-  "home_smart": "Умный дом"
+  "home_smart": "Умный дом",
+  "all_modules": "Все модули",
+  "menu": "Меню",
+  "index": "Главная"
 }
