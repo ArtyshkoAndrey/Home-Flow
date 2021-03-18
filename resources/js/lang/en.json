@@ -39,5 +39,11 @@
   "home_smart": "Smart Home",
   "all_modules": "All modules",
   "menu": "Menu",
-  "index": "Home"
+  "index": "Home",
+  "home_settings":{
+    "module": {
+      "title": "Setting module"
+    }
+  },
+  "save": "Save"
 }

@@ -28,6 +28,17 @@ export default [
     children: [
       { path: '', redirect: { name: 'home.index' } },
       { path: 'index', name: 'home.index', component: page('home/index.vue') },
+      {
+        path: 'settings',
+        component: {
+          // Inline declaration of a component that renders our <router-view>
+          render: (c) => c('router-view')
+        },
+        children: [
+          { path: '', redirect: { name: 'home.settings.module' } },
+          { path: 'module', name: 'module', component: page('home/settings/module.vue') }
+        ]
+      },
     ]
   },
 

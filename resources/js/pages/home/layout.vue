@@ -38,6 +38,16 @@ export default {
           icon: 'home',
           name: this.$t('index'),
           route: 'home.index'
+        },
+        {
+          icon: 'cog',
+          name: 'Панель управления',
+          route: 'home'
+        },
+        {
+          icon: 'cog',
+          name: 'Статистика',
+          route: 'home'
         }
       ]
     }

@@ -18,6 +18,15 @@
                           last-update="Последнее обновление 30 минут назад"
         />
       </div>
+
+      <div class="col-md-6 col-12">
+        <home-module-info title="Датчик затопления"
+                          bg-color="bg-primary"
+                          info="Необноружено"
+                          ico="hand-holding-water"
+                          last-update="Последнее обновление 1 минуту назад"
+        />
+      </div>
     </div>
   </card>
 </template>

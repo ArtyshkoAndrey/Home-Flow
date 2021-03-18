@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 // import { } from '@fortawesome/free-regular-svg-icons'
 
 import {
-  faUser, faLock, faSignOutAlt, faCog, faChevronDown, faHome, faTemperatureHigh, faShieldAlt
+  faUser, faLock, faSignOutAlt, faCog, faChevronDown, faHome, faTemperatureHigh, faShieldAlt, faHandHoldingWater
 } from '@fortawesome/free-solid-svg-icons'
 
 import {
@@ -21,7 +21,8 @@ library.add(
   faChevronDown,
   faHome,
   faTemperatureHigh,
-  faShieldAlt
+  faShieldAlt,
+  faHandHoldingWater
 )
 
 Vue.component('Fa', FontAwesomeIcon)

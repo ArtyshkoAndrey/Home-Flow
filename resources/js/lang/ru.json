@@ -39,5 +39,11 @@
   "home_smart": "Умный дом",
   "all_modules": "Все модули",
   "menu": "Меню",
-  "index": "Главная"
+  "index": "Главная",
+  "home_settings":{
+    "module": {
+      "title": "Настройка модуля"
+    }
+  },
+  "save": "Сохранить"
 }
