@@ -12,7 +12,7 @@ export default [
   { path: '/email/verify/:id', name: 'verification.verify', component: page('auth/verification/verify.vue') },
   { path: '/email/resend', name: 'verification.resend', component: page('auth/verification/resend.vue') },
 
-  { path: '/home', name: 'home', component: page('home.vue') },
+  { path: '/root', name: 'home', component: page('home.vue') },
   {
     path: '/settings',
     component: page('settings/index.vue'),
@@ -20,6 +20,25 @@ export default [
       { path: '', redirect: { name: 'settings.profile' } },
       { path: 'profile', name: 'settings.profile', component: page('settings/profile.vue') },
       { path: 'password', name: 'settings.password', component: page('settings/password.vue') }
+    ]
+  },
+  {
+    path: '/home',
+    component: page('home/layout.vue'),
+    children: [
+      { path: '', redirect: { name: 'home.index' } },
+      { path: 'index', name: 'home.index', component: page('home/index.vue') },
+      {
+        path: 'settings',
+        component: {
+          // Inline declaration of a component that renders our <router-view>
+          render: (c) => c('router-view')
+        },
+        children: [
+          { path: '', redirect: { name: 'home.settings.module' } },
+          { path: 'module', name: 'module', component: page('home/settings/module.vue') }
+        ]
+      },
     ]
   },
 

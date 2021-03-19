@@ -4,7 +4,7 @@
       <card :title="$t('login')">
         <form @submit.prevent="login" @keydown="form.onKeydown($event)">
           <!-- Email -->
-          <div class="form-group row">
+          <div class="row mb-3">
             <label class="col-md-3 col-form-label text-md-right">{{ $t('email') }}</label>
             <div class="col-md-7">
               <input v-model="form.email" :class="{ 'is-invalid': form.errors.has('email') }" class="form-control" type="email" name="email">
@@ -13,7 +13,7 @@
           </div>
 
           <!-- Password -->
-          <div class="form-group row">
+          <div class="row mb-3">
             <label class="col-md-3 col-form-label text-md-right">{{ $t('password') }}</label>
             <div class="col-md-7">
               <input v-model="form.password" :class="{ 'is-invalid': form.errors.has('password') }" class="form-control" type="password" name="password">
@@ -22,14 +22,14 @@
           </div>
 
           <!-- Remember Me -->
-          <div class="form-group row">
+          <div class="row mb-3">
             <div class="col-md-3" />
             <div class="col-md-7 d-flex">
               <checkbox v-model="remember" name="remember">
                 {{ $t('remember_me') }}
               </checkbox>
 
-              <router-link :to="{ name: 'password.request' }" class="small ml-auto my-auto">
+              <router-link :to="{ name: 'password.request' }" class="small ms-auto my-auto">
                 {{ $t('forgot_password') }}
               </router-link>
             </div>

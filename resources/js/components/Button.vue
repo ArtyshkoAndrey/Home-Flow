@@ -4,7 +4,7 @@
     'btn-block': block,
     'btn-lg': large,
     'btn-loading': loading
-  }" class="btn"
+  }" class="btn rounded-3"
   >
     <slot />
   </button>

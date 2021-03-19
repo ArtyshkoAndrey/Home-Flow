@@ -1,9 +1,7 @@
 <template>
   <div class="row">
-    <div class="col-md-3 mb-3">
-      <card :title="$t('settings')"
-            class="settings-card"
-      >
+    <div class="col-md-3">
+      <card :title="$t('menu')" class="settings-card">
         <div class="list-group">
           <router-link v-for="tab in tabs"
                        :key="tab.route"
@@ -19,7 +17,6 @@
         </div>
       </card>
     </div>
-
     <div class="col-md-9">
       <transition name="fade" mode="out-in">
         <router-view />
@@ -29,21 +26,28 @@
 </template>
 
 <script>
-export default {
-  middleware: 'auth',
 
+export default {
+  name: 'HomeLayout',
+  middleware: 'auth',
+  scrollToTop: false,
   computed: {
     tabs () {
       return [
         {
-          icon: 'user',
-          name: this.$t('profile'),
-          route: 'settings.profile'
+          icon: 'home',
+          name: this.$t('index'),
+          route: 'home.index'
         },
         {
-          icon: 'lock',
-          name: this.$t('password'),
-          route: 'settings.password'
+          icon: 'cog',
+          name: 'Панель управления',
+          route: 'home'
+        },
+        {
+          icon: 'cog',
+          name: 'Статистика',
+          route: 'home'
         }
       ]
     }
