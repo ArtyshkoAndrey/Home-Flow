@@ -29,8 +29,8 @@ Route::group(['middleware' => 'auth:api'], function () {
   Route::post('logout', [LoginController::class, 'logout']);
 
   Route::get('user', [UserController::class, 'current']);
-  Route::resource('room', RoomController::class);
-  Route::resource('module', ModuleController::class);
+  Route::apiResource('room', RoomController::class);
+  Route::apiResource('module', ModuleController::class);
 
   Route::patch('settings/profile', [ProfileController::class, 'update']);
   Route::patch('settings/password', [PasswordController::class, 'update']);

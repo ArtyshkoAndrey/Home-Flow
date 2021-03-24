@@ -7,3 +7,16 @@
 @import 'elements/buttons';
 @import 'elements/transitions';
 @import 'elements/gradients';
+
+.fasearch .fasearch-content {
+  padding: 5px;
+  max-height: 150px!important;
+  min-height: 100px!important;
+  overflow: hidden auto;
+  position: relative!important;
+  background: #fff;
+  z-index: 999;
+  left: 0!important;
+  right: 0!important;
+  box-shadow: 0 0 1px 0;
+}

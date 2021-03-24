@@ -1,7 +1,7 @@
 <template>
   <card :title="$t('home.settings.module.create.title')">
     <div class="row">
-      <form @submit.prevent="login" @keydown="form.onKeydown($event)">
+      <form @submit.prevent="create" @keydown="form.onKeydown($event)">
         <!-- Email -->
         <div class="row mb-3">
           <label class="col-md-3 col-form-label text-md-right">{{ $t('name') }}</label>
@@ -91,23 +91,7 @@
         <div class="row mb-3">
           <label class="col-md-3 col-form-label text-md-right">{{ $t('home.settings.module.form.ico') }}</label>
           <div class="col-md-7">
-            <vfa-picker v-model="form.ico" is-unicode="true">
-              <template v-slot:activator="{ on }">
-                <input v-model="form.ico"
-                       @click="on"
-                       :class="{ 'is-invalid': form.errors.has('ico') }"
-                       class="form-control"
-                       type="text" />
-              </template>
-              <template v-slot:icon="{ icon, picked }">
-                <div @click="picked(icon)" :title="icon.label">
-                  <span :class="[parent(icon), `fa-${icon.class}`, 'vfa-icon-preview']" />
-                  <div class="vfa-icon-info">
-                    <span class="class">{{ icon.unicode }}</span>
-                  </div>
-                </div>
-              </template>
-            </vfa-picker>
+            <font-awesome-picker v-model="form.ico" :value="'d'"></font-awesome-picker>
           </div>
         </div>
 
@@ -127,10 +111,14 @@
 <script>
 import Form from 'vform'
 import axios from 'axios'
-import { mapGetters } from 'vuex'
+import FontAwesomePicker from "bootstrap-vue-font-awesome-picker";
+import {mapGetters} from "vuex";
 
 export default {
   name: 'Create',
+  components: {
+    FontAwesomePicker
+  },
   data: () => ({
     form: new Form({
       name: '',
@@ -138,29 +126,23 @@ export default {
       type: '',
       traits: [],
       mqtt: '',
-      ico: undefined
+      ico: ''
     }),
     types: [],
     traits: [],
     rooms: []
   }),
   metaInfo () {
-    return { title: 'Настройки модуля температуры' }
+    return { title: 'Создание нового модуля' }
   },
-  computed: {
-
-  },
+  computed: mapGetters({
+    user: 'auth/user'
+  }),
   methods: {
-    parent (icon) {
-      if (icon.styles.indexOf("regular") > -1) {
-        return "fa";
-      } else if (icon.styles.indexOf("solid") > -1) {
-        return "fas";
-      } else if (icon.styles.indexOf("brands") > -1) {
-        return "fab";
-      }
-      return "";
-    },
+    async create () {
+      console.log(this.form)
+      const { data } = await this.form.post('/api/module')
+    }
   },
   mounted () {
     axios.get('/api/google/types')

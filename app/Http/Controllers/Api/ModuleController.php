@@ -31,7 +31,19 @@ class ModuleController extends Controller
    */
   public function store(Request $request)
   {
-    //
+//    dd($request->all());
+    $request->validate([
+      'name' => 'required|string',
+      'google_index' => 'required|string',
+      'ico' => 'required|string',
+      'mqtt' => 'required|string',
+      'room' => 'required|exists:rooms,id',
+      'type' => 'required|exists:google_types,id',
+      'traits' => 'required|array',
+      'traits.*' => 'required|exists:google_traits,id',
+    ]);
+
+    return '123';
   }
 
   /**
