@@ -14,12 +14,12 @@ export default [
 
   { path: '/root', name: 'home', component: page('home.vue') },
   {
-    path: '/settings',
-    component: page('settings/index.vue'),
+    path: '/user',
+    component: page('user/index.vue'),
     children: [
-      { path: '', redirect: { name: 'settings.profile' } },
-      { path: 'profile', name: 'settings.profile', component: page('settings/profile.vue') },
-      { path: 'password', name: 'settings.password', component: page('settings/password.vue') }
+      { path: '', redirect: { name: 'user.profile' } },
+      { path: 'profile', name: 'user.profile', component: page('user/profile.vue') },
+      { path: 'password', name: 'user.password', component: page('user/password.vue') }
     ]
   },
   {
@@ -31,12 +31,11 @@ export default [
       {
         path: 'settings',
         component: {
-          // Inline declaration of a component that renders our <router-view>
           render: (c) => c('router-view')
         },
         children: [
-          { path: '', redirect: { name: 'home.settings.module' } },
-          { path: 'module', name: 'module', component: page('home/settings/module.vue') }
+          { path: '', redirect: { name: 'home.settings.module.create' } },
+          { path: 'module/create', name: 'home.settings.module.create', component: page('home/settings/module/create.vue') }
         ]
       },
     ]

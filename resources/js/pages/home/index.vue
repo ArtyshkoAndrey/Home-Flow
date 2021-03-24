@@ -1,39 +1,56 @@
 <template>
   <card :title="$t('all_modules')">
-    <div class="row">
-      <div class="col-md-6 col-12">
-        <home-module-info title="Температура"
-                          bg-color="bg-secondary"
-                          info="+ 27"
-                          type="C"
-                          ico="temperature-high"
-                          last-update="Последнее обновление 5 минут назад"
-        />
+    <transition name="fade" appear mode="out-in">
+      <Loader v-if="loading" key="loading" />
+      <div v-else key="data" class="row">
+        <div v-for="module in modules" :key="module.id" class="col-md-6 col-12">
+          <home-module-info :module="module" />
+        </div>
       </div>
-      <div class="col-md-6 col-12">
-        <home-module-info title="Сигнализация"
-                          bg-color="bg-secondary"
-                          info="Выкл"
-                          ico="shield-alt"
-                          last-update="Последнее обновление 30 минут назад"
-        />
-      </div>
-
-      <div class="col-md-6 col-12">
-        <home-module-info title="Датчик затопления"
-                          bg-color="bg-primary"
-                          info="Необноружено"
-                          ico="hand-holding-water"
-                          last-update="Последнее обновление 1 минуту назад"
-        />
-      </div>
-    </div>
+    </transition>
   </card>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import axios from 'axios'
+
 export default {
-  name: 'Index'
+  name: 'Index',
+  data: () => ({
+    title: window.config.appName + 'Главна страница системы',
+    modules: [],
+    loading: true,
+    interval: null
+  }),
+  metaInfo () {
+    return { title: 'Главна страница системы' }
+  },
+  computed: mapGetters({
+    authenticated: 'auth/check'
+  }),
+  mounted () {
+    axios.get('/api/module')
+      .then(response => {
+        this.modules = response.data.modules
+        this.loading = false
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    this.interval = setInterval(() => {
+      axios.get('/api/module')
+        .then(response => {
+          this.modules = response.data.modules
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    }, 10000)
+  },
+  beforeDestroy () {
+    clearInterval(this.interval)
+  }
 }
 </script>
 

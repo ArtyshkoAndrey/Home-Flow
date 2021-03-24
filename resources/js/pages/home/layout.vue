@@ -36,18 +36,23 @@ export default {
       return [
         {
           icon: 'home',
-          name: this.$t('index'),
+          name: this.$t('home.menu.index'),
           route: 'home.index'
         },
         {
           icon: 'cog',
-          name: 'Панель управления',
+          name: this.$t('home.menu.panel'),
           route: 'home'
         },
         {
           icon: 'cog',
-          name: 'Статистика',
+          name: this.$t('home.menu.statistics'),
           route: 'home'
+        },
+        {
+          icon: 'plus',
+          name: this.$t('home.menu.create_module'),
+          route: 'home.settings.module.create'
         }
       ]
     }

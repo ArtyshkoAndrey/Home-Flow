@@ -2,6 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
       <router-link :to="{ name: user ? 'home' : 'welcome' }" class="navbar-brand">
+        <img src="/public/images/logo.png" height="35px" alt="logo" class="w-auto">
         {{ appName }}
       </router-link>
 
@@ -28,7 +29,7 @@
               {{ user.name }}
             </a>
             <div class="dropdown-menu">
-              <router-link :to="{ name: 'settings.profile' }" class="dropdown-item pl-3">
+              <router-link :to="{ name: 'user.profile' }" class="dropdown-item pl-3">
                 <fa icon="cog" fixed-width />
                 {{ $t('settings') }}
               </router-link>

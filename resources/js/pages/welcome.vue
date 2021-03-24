@@ -3,7 +3,7 @@
     <div class="top-right links">
       <template v-if="authenticated">
         <router-link :to="{ name: 'home' }">
-          {{ $t('home') }}
+          {{ $t('index') }}
         </router-link>
       </template>
       <template v-else>
@@ -35,7 +35,7 @@ export default {
   layout: 'basic',
 
   metaInfo () {
-    return { title: this.$t('home') }
+    return { title: this.$t('index') }
   },
 
   data: () => ({
