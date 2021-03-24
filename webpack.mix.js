@@ -43,7 +43,7 @@ mix.then(() => {
   }
 })
 
-mix.browserSync('http://huli-home')
+mix.browserSync('http://home-flow')
 
 function publishAseets () {
   const publicDir = path.resolve(__dirname, './public')
