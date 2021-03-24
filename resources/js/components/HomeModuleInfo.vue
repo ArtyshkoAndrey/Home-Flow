@@ -2,18 +2,19 @@
   <div class="card mb-3 rounded-0 border-0 shadow-none">
     <div class="card-body p-0">
       <div class="row g-0 d-flex align-items-stretch">
-        <div class="col-md-4"
+        <div class="col-md-4 col-4"
         >
 <!--          <div :class="'bg-primary'" class="p-4 rounded-circle d-flex justify-content-center align-items-center text-center">-->
 <!--            <i class="fa-2x text-white" :class="module.ico"></i>-->
 <!--          </div>-->
           <div class="square">
             <div class="square-content text-white d-flex align-items-center justify-content-center" :class="'bg-primary'">
-              <i class="fa-2x text-white" :class="module.ico"></i>
+<!--              <i class="fa-2x text-white" :class="module.ico"></i>-->
+              <i class="ico"></i>
             </div>
           </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-8 col">
           <div class="card-body">
             <div class="card-title d-flex">
               <h5>
@@ -25,7 +26,7 @@
               </a>
             </div>
             <p class="card-text">
-              <small class="text-muted">{{ module.data }} {{ type }}</small>
+              <strong class="text-primary">{{ module.data }} {{ type }}</strong>
               <br>
               <small class="text-muted"></small>
             </p>
@@ -76,5 +77,10 @@ export default {
   height: 80%;
   transform:translate(-50%, -50%);
   border-radius: 100%;
+}
+.ico:after {
+  display: block;
+  /*content: this.module.ico;*/
+  font-family: 'Font Awesome 5 Free',serif
 }
 </style>

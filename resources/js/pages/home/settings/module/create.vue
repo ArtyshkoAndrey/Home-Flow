@@ -88,6 +88,29 @@
           </div>
         </div>
 
+        <div class="row mb-3">
+          <label class="col-md-3 col-form-label text-md-right">{{ $t('home.settings.module.form.ico') }}</label>
+          <div class="col-md-7">
+            <vfa-picker v-model="form.ico" is-unicode="true">
+              <template v-slot:activator="{ on }">
+                <input v-model="form.ico"
+                       @click="on"
+                       :class="{ 'is-invalid': form.errors.has('ico') }"
+                       class="form-control"
+                       type="text" />
+              </template>
+              <template v-slot:icon="{ icon, picked }">
+                <div @click="picked(icon)" :title="icon.label">
+                  <span :class="[parent(icon), `fa-${icon.class}`, 'vfa-icon-preview']" />
+                  <div class="vfa-icon-info">
+                    <span class="class">{{ icon.unicode }}</span>
+                  </div>
+                </div>
+              </template>
+            </vfa-picker>
+          </div>
+        </div>
+
         <div class="form-group row">
           <div class="col-md-7 offset-md-3 d-flex">
             <!-- Submit Button -->
@@ -114,7 +137,8 @@ export default {
       google_index: '',
       type: '',
       traits: [],
-      mqtt: ''
+      mqtt: '',
+      ico: undefined
     }),
     types: [],
     traits: [],
@@ -123,9 +147,21 @@ export default {
   metaInfo () {
     return { title: 'Настройки модуля температуры' }
   },
-  computed: mapGetters({
-    authenticated: 'auth/check'
-  }),
+  computed: {
+
+  },
+  methods: {
+    parent (icon) {
+      if (icon.styles.indexOf("regular") > -1) {
+        return "fa";
+      } else if (icon.styles.indexOf("solid") > -1) {
+        return "fas";
+      } else if (icon.styles.indexOf("brands") > -1) {
+        return "fab";
+      }
+      return "";
+    },
+  },
   mounted () {
     axios.get('/api/google/types')
       .then(response => {

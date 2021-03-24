@@ -55,7 +55,8 @@
           "traits": "Traits",
           "type": "Type",
           "g_index": "Index",
-          "room": "Room"
+          "room": "Room",
+          "ico": "Icon"
         }
       }
     }

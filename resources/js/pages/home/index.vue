@@ -1,10 +1,16 @@
 <template>
-  <card :title="$t('all_modules')">
+  <card :title="$t('all_modules')" class="mt-2 mt-md-0">
     <transition name="fade" appear mode="out-in">
       <Loader v-if="loading" key="loading" />
       <div v-else key="data" class="row">
-        <div v-for="module in modules" :key="module.id" class="col-md-6 col-12">
-          <home-module-info :module="module" />
+        <div class="col-12" v-for="room in rooms">
+          <h4>{{ room.name }}</h4>
+
+          <div class="row">
+            <div v-for="module in room.modules" :key="module.id" class="col-md-6 col-12">
+              <home-module-info :module="module" />
+            </div>
+          </div>
         </div>
       </div>
     </transition>
@@ -20,6 +26,7 @@ export default {
   data: () => ({
     title: window.config.appName + 'Главна страница системы',
     modules: [],
+    rooms: [],
     loading: true,
     interval: null
   }),
@@ -32,7 +39,8 @@ export default {
   mounted () {
     axios.get('/api/module')
       .then(response => {
-        this.modules = response.data.modules
+        this.rooms = response.data.rooms
+        // this.modules = response.data.modules
         this.loading = false
       })
       .catch(error => {
@@ -41,7 +49,8 @@ export default {
     this.interval = setInterval(() => {
       axios.get('/api/module')
         .then(response => {
-          this.modules = response.data.modules
+          // this.modules = response.data.modules
+          this.rooms = response.data.rooms
         })
         .catch(error => {
           console.log(error)

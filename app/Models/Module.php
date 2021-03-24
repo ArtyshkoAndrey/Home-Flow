@@ -44,4 +44,9 @@ class Module extends Model
   {
     return $this->belongsToMany(GoogleTrait::class, 'modules_traits');
   }
+
+  public function room (): BelongsTo
+  {
+    return $this->belongsTo(Room::class);
+  }
 }
