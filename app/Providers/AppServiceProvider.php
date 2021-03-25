@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Dusk\DuskServiceProvider;
@@ -13,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
    *
    * @return void
    */
-  public function boot()
+  public function boot(): void
   {
     if ($this->app->runningUnitTests()) {
       Schema::defaultStringLength(191);
@@ -25,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
    *
    * @return void
    */
-  public function register()
+  public function register(): void
   {
     if ($this->app->environment('local', 'testing') && class_exists(DuskServiceProvider::class)) {
       $this->app->register(DuskServiceProvider::class);
@@ -34,6 +35,7 @@ class AppServiceProvider extends ServiceProvider
     if ($this->app->environment('local')) {
       $this->app->register(\Laravel\Telescope\TelescopeServiceProvider::class);
       $this->app->register(TelescopeServiceProvider::class);
+      $this->app->register(IdeHelperServiceProvider::class);
     }
   }
 }
