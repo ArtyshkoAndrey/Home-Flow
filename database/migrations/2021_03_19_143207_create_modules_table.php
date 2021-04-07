@@ -17,8 +17,8 @@
         $table->id();
         $table->string('name');
         $table->string('google_index')->unique();
-        $table->foreignId('google_type_id')
-          ->constrained('google_types')
+        $table->foreignId('type_id')
+          ->constrained('types')
           ->onUpdate('cascade')
           ->onDelete('cascade');
         $table->string('data')->nullable();

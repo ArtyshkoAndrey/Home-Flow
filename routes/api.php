@@ -35,8 +35,8 @@ Route::group(['middleware' => 'auth:api'], function () {
   Route::patch('settings/profile', [ProfileController::class, 'update']);
   Route::patch('settings/password', [PasswordController::class, 'update']);
 
-  Route::get('google/types', [GoogleController::class, 'types']);
-  Route::get('google/traits', [GoogleController::class, 'traits']);
+  Route::get('google/types', [GoogleController::class, 'google_types']);
+  Route::get('google/traits', [GoogleController::class, 'google_traits']);
 });
 
 Route::group(['middleware' => 'guest:api'], function () {
@@ -55,4 +55,9 @@ Route::group(['middleware' => 'guest:api'], function () {
 
 Route::get('test/', function () {
   MQTT::publish('test/', 'Hello World!');
+});
+
+Route::prefix('google-home')->group(function () {
+  Route::get('modules', [App\Http\Controllers\Api\GoogleHome\ModuleController::class, 'index']);
+  Route::get('modules/{id}', [App\Http\Controllers\Api\GoogleHome\ModuleController::class, 'get']);
 });

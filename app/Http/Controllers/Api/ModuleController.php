@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Module;
 use App\Models\Room;
-use ErrorException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -20,7 +19,7 @@ class ModuleController extends Controller
    */
   public function index(): JsonResponse
   {
-    $rooms = Room::with(['modules', 'modules.type'])->get();
+    $rooms = Room::with(['modules', 'modules.type', 'modules.type.google_type'])->get();
     return response()->json(['rooms' => $rooms]);
   }
 
@@ -38,9 +37,7 @@ class ModuleController extends Controller
       'ico'           => 'required|string',
       'mqtt'          => 'required|string',
       'room'          => 'required|exists:rooms,id',
-      'type'          => 'required|exists:google_types,id',
-      'traits'        => 'required|array',
-      'traits.*'      => 'required|exists:google_traits,id',
+      'type'          => 'required|exists:types,id',
     ]);
 
     $data = $request->all();
@@ -49,8 +46,6 @@ class ModuleController extends Controller
       ->associate($data['room']);
     $module->type()
       ->associate($data['type']);
-    $module->traits()
-      ->sync($data['traits']);
     $module->save();
     return response()->json(['module' => $module]);
   }

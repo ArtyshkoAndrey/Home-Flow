@@ -14,7 +14,7 @@
      *
      * @return JsonResponse
      */
-    public function types(): JsonResponse
+    public function google_types(): JsonResponse
     {
       $types = GoogleType::all();
 
@@ -26,7 +26,7 @@
      *
      * @return JsonResponse
      */
-    public function traits(): JsonResponse
+    public function google_traits(): JsonResponse
     {
       $traits = GoogleTrait::all();
 

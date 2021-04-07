@@ -1,22 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="home-flow">
+  <component name="PublishConfigData" serverName="HomeFlow">
     <serverData>
-      <paths name="Lobelie">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="dockuboardhouse">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="home-flow">
+      <paths name="HomeFlow">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />

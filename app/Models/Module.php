@@ -46,6 +46,8 @@ use Illuminate\Support\Carbon;
  * @method static Builder|Module whereRoomId($value)
  * @method static Builder|Module whereUpdatedAt($value)
  * @mixin Eloquent
+ * @property int $type_id
+ * @method static Builder|Module whereTypeId($value)
  */
 class Module extends Model
 {
@@ -80,17 +82,7 @@ class Module extends Model
    */
   public function type(): BelongsTo
   {
-    return $this->belongsTo(GoogleType::class, 'google_type_id', 'id');
-  }
-
-  /**
-   * Many Traits module
-   *
-   * @return BelongsToMany
-   */
-  public function traits(): BelongsToMany
-  {
-    return $this->belongsToMany(GoogleTrait::class, 'modules_traits');
+    return $this->belongsTo(Type::class, 'type_id', 'id');
   }
 
   /**

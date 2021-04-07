@@ -14,7 +14,6 @@ use Illuminate\Support\Carbon;
  *
  * @property int $id
  * @property string $name
- * @property string $type
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @method static GoogleTypeFactory factory(...$parameters)
@@ -39,6 +38,5 @@ class GoogleType extends Model
    */
   protected $fillable = [
     'name',
-    'type',
   ];
 }

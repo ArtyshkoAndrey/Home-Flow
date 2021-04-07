@@ -17,25 +17,20 @@ class DatabaseSeeder extends Seeder
   {
     // \App\Models\User::factory(10)->create();
     DB::table('google_types')->insert([
-      'name' => 'Свет',
-      'type' => 'action.devices.types.LIGHT'
+      'name' => 'action.devices.types.LIGHT'
     ]);
     DB::table('google_types')->insert([
-      'name' => 'Охрана',
-      'type' => 'action.devices.types.SECURITYSYSTEM'
+      'name' => 'action.devices.types.SECURITYSYSTEM'
     ]);
     DB::table('google_types')->insert([
-      'name' => 'Выключатель',
-      'type' => 'action.devices.types.SWITCH'
+      'name' => 'action.devices.types.SWITCH'
     ]);
     DB::table('google_types')->insert([
-      'name' => 'Сенсор(температура)',
-      'type' => 'action.devices.types.SENSOR'
+      'name' => 'action.devices.types.SENSOR'
     ]);
 
     DB::table('google_types')->insert([
-      'name' => 'Шторы',
-      'type' => 'action.devices.types.CURTAIN'
+      'name' => 'action.devices.types.CURTAIN'
     ]);
 
     DB::table('google_traits')->insert([
