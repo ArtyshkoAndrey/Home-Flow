@@ -9,8 +9,8 @@
 <!--          </div>-->
           <div class="square">
             <div class="square-content text-white d-flex align-items-center justify-content-center" :class="'bg-primary'">
-<!--              <i class="fa-2x text-white" :class="module.ico"></i>-->
-              <i class="ico"></i>
+              <i class="fa-2x text-white" :class="module.ico"></i>
+<!--              <i class="ico"></i>-->
             </div>
           </div>
         </div>
@@ -47,6 +47,8 @@ export default {
     type: function () {
       if (this.module.type.type === 'action.devices.types.SENSOR') {
         return '%'
+      } else if (this.module.type.name === 'Датчик температуры') {
+        return 'C'
       }
       return ''
     }

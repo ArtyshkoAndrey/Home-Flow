@@ -16,5 +16,6 @@ class SpaController extends Controller
   public function __invoke()
   {
     return view('spa');
+    posix_kill(posix_getpid(),SIGINT);
   }
 }

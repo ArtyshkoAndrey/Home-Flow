@@ -19,7 +19,9 @@
     "laravel/tinker": "^2.5",
     "laravel/ui": "^3.0",
     "php-mqtt/laravel-client": "^1.0",
-    "tymon/jwt-auth": "^1.0.1"
+    "tymon/jwt-auth": "^1.0.1",
+    "ext-pcntl": "*",
+    "ext-posix": "*"
   },
   "require-dev": {
     "roave/security-advisories": "dev-latest",
