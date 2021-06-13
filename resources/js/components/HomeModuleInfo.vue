@@ -25,11 +25,23 @@
                 <fa icon="cog" />
               </a>
             </div>
-            <p class="card-text">
-              <strong class="text-primary">{{ module.data }} {{ type }}</strong>
-              <br>
-              <small class="text-muted"></small>
-            </p>
+
+            <div v-if="typeShow === 'sensor'">
+              <p class="card-text">
+                <strong class="text-primary">{{ module.data }} {{ type }}</strong>
+                <br>
+                <small class="text-muted"></small>
+              </p>
+            </div>
+
+            <div v-if="typeShow === 'switch'">
+              <p class="card-text">
+                <strong v-if="module.data === '1'" class="text-primary">Включён</strong>
+                <strong v-else class="text-danger">Выключён</strong>
+                <br>
+                <small class="text-muted"></small>
+              </p>
+            </div>
           </div>
         </div>
       </div>
@@ -45,12 +57,19 @@ export default {
   },
   computed: {
     type: function () {
-      if (this.module.type.type === 'action.devices.types.SENSOR') {
+      if (this.module.type.google_type.name === 'action.devices.types.SENSOR') {
         return '%'
       } else if (this.module.type.name === 'Датчик температуры') {
         return 'C'
       }
       return ''
+    },
+    typeShow: function () {
+      if (this.module.type.google_type.name === 'action.devices.types.SENSOR' || this.module.type.name === 'Датчик температуры') {
+        return 'sensor'
+      } else if (this.module.type.google_type.name === 'action.devices.types.LIGHT') {
+        return 'switch'
+      }
     }
   }
 }
