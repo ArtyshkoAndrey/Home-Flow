@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="HomeFlow">
+  <component name="PublishConfigData" serverName="Flow">
     <serverData>
-      <paths name="HomeFlow">
+      <paths name="Flow">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="home-flow">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />

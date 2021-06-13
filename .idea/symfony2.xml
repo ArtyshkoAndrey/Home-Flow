@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Symfony2PluginSettings">
-    <option name="pathToTranslation" value="resource/lang" />
-    <option name="directoryToWeb" value="public" />
     <option name="pluginEnabled" value="true" />
-    <option name="twigBundleNamespaceSupport" value="false" />
     <option name="profilerCsvPath" value="" />
-    <option name="routingFiles">
-      <list>
-        <routing_file path="routes/api.php" />
-        <routing_file path="routes/web.php" />
-        <routing_file path="routes/spa.php" />
-        <routing_file path="routes/channels.php" />
-      </list>
-    </option>
   </component>
 </project>

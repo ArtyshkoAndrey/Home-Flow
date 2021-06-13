@@ -17,7 +17,7 @@ return [
   |
   */
 
-  'default_connection' => 'public',
+  'default_connection' => 'default',
 
   /*
   |--------------------------------------------------------------------------
@@ -36,8 +36,8 @@ return [
       'port' => env('MQTT_PORT', 1883),
       'client_id' => env('MQTT_CLIENT_ID'),
       'auth' => [
-        'username' => env('MQTT_AUTH_USERNAME'),
-        'password' => env('MQTT_AUTH_PASSWORD'),
+        'username' => env('MQTT_AUTH_USERNAME', 'andrey'),
+        'password' => env('MQTT_AUTH_PASSWORD', '241298art'),
       ],
     ],
 
