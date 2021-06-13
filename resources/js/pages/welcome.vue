@@ -17,11 +17,11 @@
     </div>
 
     <div class="text-center">
-      <div class="title mb-4">
+      <div class="title mb-4 animate__animated animate__bounce">
         {{ title }}
       </div>
 
-      <div class="links">
+      <div class="links animate__animated animate__fadeIn animate__delay-2">
         <a href="https://github.com/ArtyshkoAndrey/Home-Flow">github.com/ArtyshkoAndrey/Home-Flow</a>
       </div>
     </div>
