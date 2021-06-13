@@ -2,7 +2,7 @@
   <card :title="$t('all_modules')" class="mt-2 mt-md-0">
     <transition name="fade" appear mode="out-in">
       <Loader v-if="loading" key="loading" />
-      <div v-else key="data" class="row">
+      <div v-else key="data" class="row px-3">
         <div class="col-12" v-for="room in rooms">
           <h4>{{ room.name }}</h4>
 
@@ -55,7 +55,7 @@ export default {
         .catch(error => {
           console.log(error)
         })
-    }, 10000)
+    }, 3000)
   },
   beforeDestroy () {
     clearInterval(this.interval)
