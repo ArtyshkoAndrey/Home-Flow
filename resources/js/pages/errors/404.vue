@@ -1,15 +1,18 @@
 <template>
-  <card class="text-center">
-    <h3 class="mb-4">
-      {{ $t('page_not_found') }}
-    </h3>
+  <div class="row w-100 justify-content-center align-items-center">
+    <div class="col-md-4">
+      <card class="text-center">
+        <h3 class="mb-4">
+          {{ $t('page_not_found') }}
+        </h3>
 
-    <div class="links">
-      <router-link :to="{ name: 'welcome' }">
-        {{ $t('go_home') }}
-      </router-link>
+
+        <router-link :to="{ name: 'welcome' }" class="btn btn-outline-primary rounded">
+          {{ $t('go_home') }}
+        </router-link>
+      </card>
     </div>
-  </card>
+  </div>
 </template>
 
 <script>
