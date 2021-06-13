@@ -8,24 +8,21 @@ use PhpMqtt\Client\Concerns\OffersHooks;
 use PhpMqtt\Client\Concerns\ValidatesConfiguration;
 use PhpMqtt\Client\ConnectionSettings;
 use PhpMqtt\Client\Contracts\MessageProcessor;
+use PhpMqtt\Client\Contracts\MqttClient as ClientContract;
 use PhpMqtt\Client\Contracts\Repository;
+use PhpMqtt\Client\Exceptions\ClientNotConnectedToBrokerException;
+use PhpMqtt\Client\Exceptions\ConnectingToBrokerFailedException;
 use PhpMqtt\Client\Exceptions\DataTransferException;
 use PhpMqtt\Client\Exceptions\InvalidMessageException;
 use PhpMqtt\Client\Exceptions\MqttClientException;
-use PhpMqtt\Client\Exceptions\ProtocolViolationException;
-use PhpMqtt\Client\Logger;
-use PhpMqtt\Client\Message;
-use PhpMqtt\Client\MessageType;
-use PhpMqtt\Client\MqttClient;
-
-use PhpMqtt\Client\Contracts\MqttClient as ClientContract;
-
-use PhpMqtt\Client\Exceptions\ClientNotConnectedToBrokerException;
-use PhpMqtt\Client\Exceptions\ConnectingToBrokerFailedException;
 use PhpMqtt\Client\Exceptions\PendingMessageAlreadyExistsException;
 use PhpMqtt\Client\Exceptions\PendingMessageNotFoundException;
 use PhpMqtt\Client\Exceptions\ProtocolNotSupportedException;
+use PhpMqtt\Client\Exceptions\ProtocolViolationException;
+use PhpMqtt\Client\Logger;
+use PhpMqtt\Client\Message;
 use PhpMqtt\Client\MessageProcessors\Mqtt31MessageProcessor;
+use PhpMqtt\Client\MessageType;
 use PhpMqtt\Client\PublishedMessage;
 use PhpMqtt\Client\Repositories\MemoryRepository;
 use PhpMqtt\Client\SubscribeRequest;
@@ -33,8 +30,12 @@ use PhpMqtt\Client\Subscription;
 use PhpMqtt\Client\UnsubscribeRequest;
 use Psr\Log\LoggerInterface;
 
-
-class MQTTHelp implements ClientContract
+/**
+ * An MQTT client implementing protocol version 3.1.
+ *
+ * @package PhpMqtt\Client
+ */
+class MqttClient implements ClientContract
 {
   use GeneratesRandomClientIds,
     OffersHooks,
@@ -622,7 +623,6 @@ class MQTTHelp implements ClientContract
           break;
         }
       }
-
       if ($queueWaitLimit !== null && (microtime(true) - $loopStartedAt) > $queueWaitLimit) {
         break;
       }
