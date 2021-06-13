@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\GoogleController;
+use App\Http\Controllers\Api\RootController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\OAuthController;
@@ -37,6 +38,8 @@ Route::group(['middleware' => 'auth:api'], function () {
 
   Route::get('google/types', [GoogleController::class, 'google_types']);
   Route::get('google/traits', [GoogleController::class, 'google_traits']);
+
+  Route::get('status', [RootController::class, 'status']);
 });
 
 Route::group(['middleware' => 'guest:api'], function () {
@@ -51,10 +54,6 @@ Route::group(['middleware' => 'guest:api'], function () {
 
   Route::post('oauth/{driver}', [OAuthController::class, 'redirect']);
   Route::get('oauth/{driver}/callback', [OAuthController::class, 'handleCallback'])->name('oauth.callback');
-});
-
-Route::get('test/', function () {
-  MQTT::publish('test/', 'Hello World!');
 });
 
 Route::prefix('google-home')->group(function () {
