@@ -61,5 +61,8 @@
       }
     }
   },
-  "save": "Save"
+  "save": "Save",
+  "root": {
+    "title": "System information"
+  }
 }
