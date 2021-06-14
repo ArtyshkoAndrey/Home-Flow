@@ -2,15 +2,12 @@
   <div class="card mb-3 rounded-0 border-0 shadow-none">
     <div class="card-body p-0">
       <div class="row g-0 d-flex align-items-stretch">
-        <div class="col-md-4 col-4"
-        >
-<!--          <div :class="'bg-primary'" class="p-4 rounded-circle d-flex justify-content-center align-items-center text-center">-->
-<!--            <i class="fa-2x text-white" :class="module.ico"></i>-->
-<!--          </div>-->
+        <div class="col-md-4 col-4">
           <div class="square">
-            <div class="square-content text-white d-flex align-items-center justify-content-center" :class="'bg-primary'">
-              <i class="fa-2x text-white" :class="module.ico"></i>
-<!--              <i class="ico"></i>-->
+            <div class="square-content text-white d-flex align-items-center justify-content-center"
+                 :class=" module.data === null ? 'bg-danger' : 'bg-primary'"
+            >
+              <i class="fa-2x text-white" :class="module.ico" />
             </div>
           </div>
         </div>
@@ -26,15 +23,21 @@
               </a>
             </div>
 
-            <div v-if="typeShow === 'sensor'">
+            <div v-if="module.data === null">
               <p class="card-text">
-                <strong class="text-primary">{{ module.data }} {{ type }}</strong>
-                <br>
-                <small class="text-muted"></small>
+                <strong class="text-muted">Нет данных</strong>
               </p>
             </div>
 
-            <div v-if="typeShow === 'switch'">
+            <div v-else-if="module.type.type === 'temperature' || module.type.type === 'humidity'">
+              <p class="card-text">
+                <strong class="text-primary">{{ module.data }} {{ icoType }}</strong>
+                <br>
+                <small class="text-muted"/>
+              </p>
+            </div>
+
+            <div v-else-if="module.type.type === 'switch' || module.type.type === 'light'">
               <p class="card-text">
                 <strong v-if="module.data === '1'" class="text-primary">Включён</strong>
                 <strong v-else class="text-danger">Выключён</strong>
@@ -53,23 +56,19 @@
 export default {
   name: 'HomeModuleInfo',
   props: {
-    module: { type: Object, default: null }
+    module: {
+      type: Object,
+      default: null
+    }
   },
   computed: {
-    type: function () {
-      if (this.module.type.google_type.name === 'action.devices.types.SENSOR') {
-        return '%'
-      } else if (this.module.type.name === 'Датчик температуры') {
+    icoType: function () {
+      if (this.module.type.type === 'temperature') {
         return 'C'
+      } else if (this.module.type.name === 'humidity') {
+        return '%'
       }
       return ''
-    },
-    typeShow: function () {
-      if (this.module.type.google_type.name === 'action.devices.types.SENSOR' || this.module.type.name === 'Датчик температуры') {
-        return 'sensor'
-      } else if (this.module.type.google_type.name === 'action.devices.types.LIGHT') {
-        return 'switch'
-      }
     }
   }
 }
@@ -96,12 +95,13 @@ export default {
   left: 50%;
   width: 80%;
   height: 80%;
-  transform:translate(-50%, -50%);
+  transform: translate(-50%, -50%);
   border-radius: 100%;
 }
+
 .ico:after {
   display: block;
   /*content: this.module.ico;*/
-  font-family: 'Font Awesome 5 Free',serif
+  font-family: 'Font Awesome 5 Free', serif
 }
 </style>

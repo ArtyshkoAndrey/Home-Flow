@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\GoogleController;
 use App\Http\Controllers\Api\RootController;
+use App\Http\Controllers\Api\TypeController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\OAuthController;
@@ -38,6 +39,7 @@ Route::group(['middleware' => 'auth:api'], function () {
 
   Route::get('google/types', [GoogleController::class, 'google_types']);
   Route::get('google/traits', [GoogleController::class, 'google_traits']);
+  Route::get('types', [TypeController::class, 'index']);
 
   Route::get('status', [RootController::class, 'status']);
 });

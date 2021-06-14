@@ -43,23 +43,6 @@
         </div>
 
         <div class="row mb-3">
-          <label class="col-md-3 col-form-label text-md-right">{{ $t('home.settings.module.form.traits') }}</label>
-          <div class="col-md-7">
-            <select id="traits" v-model="form.traits"
-                    name="traits"
-                    :class="{ 'is-invalid': form.errors.has('traits') }"
-                    class="form-control"
-                    multiple
-            >
-              <option v-for="trait in traits" :key="trait.id" :value="trait.id">
-                {{ trait.name }}
-              </option>
-            </select>
-            <has-error :form="form" field="traits" />
-          </div>
-        </div>
-
-        <div class="row mb-3">
           <label class="col-md-3 col-form-label text-md-right">{{ $t('home.settings.module.form.room') }}</label>
           <div class="col-md-7">
             <select id="room" v-model="form.room"
@@ -91,7 +74,7 @@
         <div class="row mb-3">
           <label class="col-md-3 col-form-label text-md-right">{{ $t('home.settings.module.form.ico') }}</label>
           <div class="col-md-7">
-            <font-awesome-picker v-model="form.ico" :value="'d'"></font-awesome-picker>
+            <font-awesome-picker v-model="form.ico" :value="'d'" />
           </div>
         </div>
 
@@ -111,8 +94,8 @@
 <script>
 import Form from 'vform'
 import axios from 'axios'
-import FontAwesomePicker from "bootstrap-vue-font-awesome-picker";
-import {mapGetters} from "vuex";
+import FontAwesomePicker from 'bootstrap-vue-font-awesome-picker'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'Create',
@@ -124,12 +107,10 @@ export default {
       name: '',
       google_index: '',
       type: '',
-      traits: [],
       mqtt: '',
       ico: ''
     }),
     types: [],
-    traits: [],
     rooms: []
   }),
   metaInfo () {
@@ -138,14 +119,8 @@ export default {
   computed: mapGetters({
     user: 'auth/user'
   }),
-  methods: {
-    async create () {
-      console.log(this.form)
-      const { data } = await this.form.post('/api/module')
-    }
-  },
   mounted () {
-    axios.get('/api/google/types')
+    axios.get('/api/types')
       .then(response => {
         this.types = response.data.types
       })
@@ -168,6 +143,13 @@ export default {
       .catch(error => {
         console.warn(error.response.data)
       })
+  },
+  methods: {
+    async create () {
+      console.log(this.form)
+      // eslint-disable-next-line no-unused-vars
+      const { data } = await this.form.post('/api/module')
+    }
   }
 }
 </script>
