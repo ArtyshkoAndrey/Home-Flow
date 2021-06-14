@@ -3,11 +3,11 @@
     <transition name="fade" appear mode="out-in">
       <Loader v-if="loading" key="loading" />
       <div v-else key="data" class="row px-3">
-        <div class="col-12" v-for="room in rooms">
+        <div v-for="room in rooms" class="col-12">
           <h4>{{ room.name }}</h4>
 
           <div class="row">
-            <div v-for="module in room.modules" :key="module.id" class="col-md-6 col-12">
+            <div v-for="module in room.modules" :key="module.id" class="col-lg-6 col-xxl-4 col-md-12 col-12">
               <home-module-info :module="module" />
             </div>
           </div>
