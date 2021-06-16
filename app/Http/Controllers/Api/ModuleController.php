@@ -32,12 +32,12 @@ class ModuleController extends Controller
   public function store(Request $request): JsonResponse
   {
     $request->validate([
-      'name'          => 'required|string',
-      'google_index'  => 'required|string',
-      'ico'           => 'required|string',
-      'mqtt'          => 'required|string',
-      'room'          => 'required|exists:rooms,id',
-      'type'          => 'required|exists:types,id',
+      'name' => 'required|string',
+      'google_index' => 'required|string',
+      'ico' => 'required|string|min:1',
+      'mqtt' => 'required|string',
+      'room' => 'required|exists:rooms,id',
+      'type' => 'required|exists:types,id',
     ]);
 
     $data = $request->all();
@@ -48,6 +48,7 @@ class ModuleController extends Controller
       ->associate($data['type']);
     $module->save();
     return response()->json(['module' => $module]);
+//    return response()->json(['data' => $data]);
   }
 
   /**
@@ -59,11 +60,10 @@ class ModuleController extends Controller
   public function show(int $id): JsonResponse
   {
     try {
-      $module = Module::whereId($id)
-        ->firstOrFail();
+      $module = Module::findOrFail($id);
       return response()->json(['module' => $module]);
     } catch (ModelNotFoundException $e) {
-      return response()->json(['error' => $e->getMessage()]);
+      return response()->json(['error' => $e->getMessage()], 500);
     }
   }
 
@@ -72,21 +72,27 @@ class ModuleController extends Controller
    *
    * @param Request $request
    * @param int $id
-   * @return Response
+   * @return JsonResponse
    */
-  public function update(Request $request, int $id)
+  public function update(Request $request, int $id): JsonResponse
   {
-    //
+    $module = Module::find($id);
+    $module->update($request->all());
+    $module->save();
+    return response()->json(['module' => $module]);
   }
 
   /**
    * Remove the specified resource from storage.
    *
    * @param int $id
-   * @return Response
+   * @return JsonResponse
    */
-  public function destroy(int $id)
+  public function destroy(int $id): JsonResponse
   {
-    //
+    $module = Module::findOrFail($id);
+    $module->delete();
+
+    return response()->json('success');
   }
 }

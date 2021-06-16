@@ -13,6 +13,7 @@
   "email": "Email",
   "remember_me": "Remember Me",
   "password": "Password",
+  "delete": "Delete",
   "forgot_password": "Forgot Your Password?",
   "confirm_password": "Confirm Password",
   "name": "Name",
@@ -51,12 +52,28 @@
         "create": {
           "title": "Module configuration"
         },
+        "update": {
+          "title": "Update Module"
+        },
         "form": {
           "traits": "Traits",
           "type": "Type",
           "g_index": "Index",
           "room": "Room",
           "ico": "Icon"
+        }
+      },
+      "room": {
+        "create": {
+          "title": "Create new room"
+        },
+        "update": {
+          "title": "Edit room"
+        },
+        "form": {
+          "index": "Index",
+          "name": "Name",
+          "description": "Description"
         }
       }
     }

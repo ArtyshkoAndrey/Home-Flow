@@ -17,15 +17,16 @@
               <h5>
                 {{ module.name }}
               </h5>
-
-              <a href="#" class="text-black-50 ms-auto">
+              <router-link :to="{ name: 'home.settings.module.update', params: { id: module.id } }" class="text-black-50 ms-auto">
                 <fa icon="cog" />
-              </a>
+              </router-link>
             </div>
 
             <div v-if="module.data === null">
               <p class="card-text">
                 <strong class="text-muted">Нет данных</strong>
+                <br>
+                <small class="text-muted">{{ module.updated_date }}</small>
               </p>
             </div>
 
@@ -33,7 +34,7 @@
               <p class="card-text">
                 <strong class="text-primary">{{ module.data }} {{ icoType }}</strong>
                 <br>
-                <small class="text-muted"/>
+                <small class="text-muted">{{ module.updated_date }}</small>
               </p>
             </div>
 
@@ -42,7 +43,7 @@
                 <strong v-if="module.data === '1'" class="text-primary">Включён</strong>
                 <strong v-else class="text-danger">Выключён</strong>
                 <br>
-                <small class="text-muted"></small>
+                <small class="text-muted">{{ module.updated_date }}</small>
               </p>
             </div>
           </div>

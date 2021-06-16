@@ -25,22 +25,32 @@ class RoomController extends Controller
    * Store a newly created resource in storage.
    *
    * @param Request $request
-   * @return Response
+   * @return JsonResponse
    */
-  public function store(Request $request)
+  public function store(Request $request): JsonResponse
   {
-    //
+    $request->validate([
+      'name' => 'required|string|unique:rooms|min:1|max:255',
+      'index' => 'required|string|unique:rooms|min:1|max:255'
+    ]);
+
+    $room = new Room($request->all());
+    $room->save();
+
+    return response()->json($room);
   }
 
   /**
    * Display the specified resource.
    *
    * @param int $id
-   * @return Response
+   * @return JsonResponse
    */
-  public function show($id)
+  public function show(int $id): JsonResponse
   {
-    //
+    $room = Room::findOrFail($id);
+
+    return response()->json($room);
   }
 
   /**
@@ -48,21 +58,34 @@ class RoomController extends Controller
    *
    * @param Request $request
    * @param int $id
-   * @return Response
+   * @return JsonResponse
    */
-  public function update(Request $request, $id)
+  public function update(Request $request, int $id): JsonResponse
   {
-    //
+    $request->validate([
+      'name' => 'required|string|unique:rooms,'. $id . '|min:1|max:255',
+      'index' => 'required|string|unique:rooms,'. $id . '|min:1|max:255'
+    ]);
+
+    $room = Room::findOrFail($id);
+
+    $room->update($request->all());
+    $room->save();
+
+    return response()->json($room);
   }
 
   /**
    * Remove the specified resource from storage.
    *
    * @param int $id
-   * @return Response
+   * @return JsonResponse
    */
-  public function destroy($id)
+  public function destroy(int $id): JsonResponse
   {
-    //
+    $room = Room::findOrFail($id);
+    $room->delete();
+
+    return response()->json('success');
   }
 }

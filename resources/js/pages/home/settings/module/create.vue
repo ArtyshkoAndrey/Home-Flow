@@ -1,28 +1,30 @@
 <template>
   <card :title="$t('home.settings.module.create.title')">
     <div class="row">
-      <form @submit.prevent="create" @keydown="form.onKeydown($event)">
+      <form @keydown="form.onKeydown($event)" @submit.prevent="create">
         <!-- Email -->
         <div class="row mb-3">
           <label class="col-md-3 col-form-label text-md-right">{{ $t('name') }}</label>
           <div class="col-md-7">
             <input v-model="form.name" :class="{ 'is-invalid': form.errors.has('name') }" class="form-control"
-                   type="text" name="name"
+                   name="name" type="text"
             >
-            <has-error :form="form" field="name" />
+            <has-error :form="form" field="name"/>
           </div>
         </div>
 
         <div class="row mb-3">
-          <label class="col-md-3 col-form-label text-md-right">{{ $t('home.settings.module.form.g_index') }} <span class="text-muted">(Google Home)</span></label>
+          <label class="col-md-3 col-form-label text-md-right">{{ $t('home.settings.module.form.g_index') }} <span
+            class="text-muted"
+          >(Google Home)</span></label>
           <div class="col-md-7">
             <input v-model="form.google_index"
                    :class="{ 'is-invalid': form.errors.has('google_index') }"
                    class="form-control"
-                   type="text"
                    name="google_index"
+                   type="text"
             >
-            <has-error :form="form" field="google_index" />
+            <has-error :form="form" field="google_index"/>
           </div>
         </div>
 
@@ -30,15 +32,15 @@
           <label class="col-md-3 col-form-label text-md-right">{{ $t('home.settings.module.form.type') }}</label>
           <div class="col-md-7">
             <select id="type" v-model="form.type"
-                    name="type"
                     :class="{ 'is-invalid': form.errors.has('type') }"
                     class="form-control"
+                    name="type"
             >
               <option v-for="type in types" :key="type.id" :value="type.id">
                 {{ type.name }}
               </option>
             </select>
-            <has-error :form="form" field="type" />
+            <has-error :form="form" field="type"/>
           </div>
         </div>
 
@@ -46,15 +48,15 @@
           <label class="col-md-3 col-form-label text-md-right">{{ $t('home.settings.module.form.room') }}</label>
           <div class="col-md-7">
             <select id="room" v-model="form.room"
-                    name="room"
                     :class="{ 'is-invalid': form.errors.has('room') }"
                     class="form-control"
+                    name="room"
             >
               <option v-for="room in rooms" :key="room.id" :value="room.id">
                 {{ room.name }}
               </option>
             </select>
-            <has-error :form="form" field="root" />
+            <has-error :form="form" field="room"/>
           </div>
         </div>
 
@@ -64,17 +66,18 @@
             <input v-model="form.mqtt"
                    :class="{ 'is-invalid': form.errors.has('mqtt') }"
                    class="form-control"
-                   type="text"
                    name="MQTT"
+                   type="text"
             >
-            <has-error :form="form" field="mqtt" />
+            <has-error :form="form" field="mqtt"/>
           </div>
         </div>
 
         <div class="row mb-3">
           <label class="col-md-3 col-form-label text-md-right">{{ $t('home.settings.module.form.ico') }}</label>
           <div class="col-md-7">
-            <font-awesome-picker v-model="form.ico" :value="'d'" />
+            <font-awesome-picker v-model="form.ico" :class="{ 'is-invalid': form.errors.has('ico') }"/>
+            <has-error :form="form" field="ico"/>
           </div>
         </div>
 
@@ -149,6 +152,8 @@ export default {
       console.log(this.form)
       // eslint-disable-next-line no-unused-vars
       const { data } = await this.form.post('/api/module')
+
+      await this.$router.push({ name: 'home.index' })
     }
   }
 }

@@ -4,11 +4,22 @@
       <Loader v-if="loading" key="loading" />
       <div v-else key="data" class="row px-3">
         <div v-for="room in rooms" class="col-12">
-          <h4>{{ room.name }}</h4>
-
-          <div class="row">
+          <div class="d-inline-flex align-items-center">
+            <h4 class="mb-0">{{ room.name }}</h4>
+            <router-link :to="{ name: 'home.settings.room.update', params: { id: room.id } }" class="text-black-50 ms-3 mt-1">
+              <fa icon="cog" />
+            </router-link>
+          </div>
+          <div v-if="room.modules.length > 0" class="row mt-3">
             <div v-for="module in room.modules" :key="module.id" class="col-lg-6 col-xxl-4 col-md-12 col-12">
               <home-module-info :module="module" />
+            </div>
+          </div>
+          <div v-else class="row">
+            <div class="col-12 mt-3">
+              <p class="text-muted">
+                Нет устройств
+              </p>
             </div>
           </div>
         </div>

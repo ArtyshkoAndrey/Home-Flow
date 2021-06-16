@@ -13,13 +13,14 @@
     "fideloper/proxy": "^4.4",
     "fruitcake/laravel-cors": "^2.0",
     "guzzlehttp/guzzle": "^7.0.1",
+    "hekmatinasser/verta": "^1.12",
     "laravel/framework": "^8.12",
     "laravel/socialite": "^5.0",
     "laravel/telescope": "^4.4",
     "laravel/tinker": "^2.5",
     "laravel/ui": "^3.0",
-    "php-mqtt/laravel-client": "^1.0",
     "php-mqtt/client": "^1.0",
+    "php-mqtt/laravel-client": "^1.0",
     "tymon/jwt-auth": "^1.0.1"
   },
   "require-dev": {

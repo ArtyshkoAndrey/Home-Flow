@@ -9,8 +9,8 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Carbon;
+use Verta;
 
 /**
  * App\Models\Module
@@ -64,6 +64,7 @@ class Module extends Model
     'data',
     'meta',
     'mqtt',
+    'ico'
   ];
 
   /**
@@ -73,6 +74,10 @@ class Module extends Model
    */
   protected $casts = [
     'meta' => 'json'
+  ];
+
+  protected $appends = [
+    'updated_date'
   ];
 
   /**
@@ -93,5 +98,10 @@ class Module extends Model
   public function room(): BelongsTo
   {
     return $this->belongsTo(Room::class);
+  }
+
+  public function getUpdatedDateAttribute($value): string
+  {
+    return $this->updated_at->format('d.m.Y H:i');
   }
 }

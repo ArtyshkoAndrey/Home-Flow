@@ -35,7 +35,10 @@ export default [
         },
         children: [
           { path: '', redirect: { name: 'home.settings.module.create' } },
-          { path: 'module/create', name: 'home.settings.module.create', component: page('home/settings/module/create.vue') }
+          { path: 'module/create', name: 'home.settings.module.create', component: page('home/settings/module/create.vue') },
+          { path: 'module/update/:id', name: 'home.settings.module.update', component: page('home/settings/module/update.vue') },
+          { path: 'room/create', name: 'home.settings.room.create', component: page('home/settings/room/create.vue') },
+          { path: 'room/update/:id', name: 'home.settings.room.update', component: page('home/settings/room/update.vue') }
         ]
       },
     ]
