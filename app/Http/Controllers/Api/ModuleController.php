@@ -113,7 +113,7 @@ class ModuleController extends Controller
         $client->disconnect();
       } catch (MqttClientException $e) {
         // MqttClientException is the base exception of all exceptions in the library. Catching it will catch all MQTT related exceptions.
-        return response()->json($e->getMessage(),500);
+        return response()->json($e->getMessage(), 500);
       }
     } else {
       $request->validate([
@@ -125,9 +125,10 @@ class ModuleController extends Controller
         'type' => 'required|exists:types,id',
       ]);
 
-      $data = $request->all();
-      $module->update($data);
-      $module->data = null;
+      $data = $request->except(['data']);
+      if ($module->type->type !== 'switch' && $module->type->type !== 'light') {
+        $module->data = null;
+      }
       $module->room()
         ->associate($data['room']);
       $module->type()

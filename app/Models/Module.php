@@ -18,7 +18,6 @@ use Verta;
  * @property int $id
  * @property string $name
  * @property string $google_index
- * @property int $google_type_id
  * @property string|null $data
  * @property array|null $meta
  * @property string $mqtt
@@ -27,9 +26,7 @@ use Verta;
  * @property int|null $room_id
  * @property string|null $ico
  * @property-read Room|null $room
- * @property-read Collection|GoogleTrait[] $traits
- * @property-read int|null $traits_count
- * @property-read GoogleType $type
+ * @property-read Type $type
  * @method static ModuleFactory factory(...$parameters)
  * @method static Builder|Module newModelQuery()
  * @method static Builder|Module newQuery()

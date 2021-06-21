@@ -61,4 +61,5 @@ Route::group(['middleware' => 'guest:api'], function () {
 Route::prefix('google-home')->group(function () {
   Route::get('modules', [App\Http\Controllers\Api\GoogleHome\ModuleController::class, 'index']);
   Route::get('modules/{id}', [App\Http\Controllers\Api\GoogleHome\ModuleController::class, 'get']);
+  Route::post('module/{id}', [App\Http\Controllers\Api\GoogleHome\ModuleController::class, 'set']);
 });

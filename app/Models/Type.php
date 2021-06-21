@@ -38,7 +38,8 @@ class Type extends Model
   use HasFactory;
 
   protected $fillable = [
-    'name'
+    'name',
+    'type'
   ];
 
   /**

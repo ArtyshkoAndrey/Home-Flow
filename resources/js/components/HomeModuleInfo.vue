@@ -40,10 +40,18 @@
 
             <div v-else-if="module.type.type === 'switch' || module.type.type === 'light'">
               <p class="card-text">
-<!--                <strong v-if="module.data === '1'" class="text-primary">Вкл.</strong>-->
-<!--                <strong v-else class="text-danger">Выкл.</strong>-->
                 <label class="switch">
                   <input v-model="computedSwitchLightDataToBoolean" type="checkbox">
+                  <span class="slider round" />
+                </label>
+                <br>
+                <small class="text-muted">{{ module.updated_date }}</small>
+              </p>
+            </div>
+            <div v-else-if="module.type.type === 'light_watch'">
+              <p class="card-text">
+                <label class="switch">
+                  <input v-model="computedSwitchLightDataToBoolean" type="checkbox" disabled>
                   <span class="slider round" />
                 </label>
                 <br>
@@ -189,6 +197,14 @@ export default {
 
 input:checked + .slider {
   background-color: #2196F3;
+}
+
+input:checked:disabled + .slider {
+  background-color: #89cbff;
+}
+
+input:disabled + .slider {
+  background-color: #e8e8e8;
 }
 
 input:focus + .slider {
