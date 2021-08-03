@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <div v-if="title" class="card-header">
+    <div v-if="title" class="card-header py-2 font-weight-bolder">
       {{ title }}
     </div>
 

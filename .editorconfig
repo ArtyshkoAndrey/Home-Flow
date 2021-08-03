@@ -1,5 +1,3 @@
-root = true
-
 [*]
 charset = utf-8
 end_of_line = lf
@@ -11,5 +9,6 @@ trim_trailing_whitespace = true
 [*.md]
 trim_trailing_whitespace = false
 
-[*.{vue,js,json,html,scss,blade.php,yml}]
+[*.{vue, js, json, html, scss, blade.php, yml}]
 indent_size = 2
+

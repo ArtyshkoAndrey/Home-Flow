@@ -3,7 +3,7 @@
     <div class="top-right links">
       <template v-if="authenticated">
         <router-link :to="{ name: 'home' }">
-          {{ $t('home') }}
+          {{ $t('index') }}
         </router-link>
       </template>
       <template v-else>
@@ -17,12 +17,12 @@
     </div>
 
     <div class="text-center">
-      <div class="title mb-4">
+      <div class="title mb-4 animate__animated animate__bounce">
         {{ title }}
       </div>
 
-      <div class="links">
-        <a href="https://github.com/cretueusebiu/laravel-vue-spa">github.com/cretueusebiu/laravel-vue-spa</a>
+      <div class="links animate__animated animate__fadeIn animate__delay-2">
+        <a href="https://github.com/ArtyshkoAndrey/Home-Flow">github.com/ArtyshkoAndrey/Home-Flow</a>
       </div>
     </div>
   </div>
@@ -35,7 +35,7 @@ export default {
   layout: 'basic',
 
   metaInfo () {
-    return { title: this.$t('home') }
+    return { title: this.$t('index') }
   },
 
   data: () => ({

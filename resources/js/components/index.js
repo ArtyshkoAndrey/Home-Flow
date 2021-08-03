@@ -4,6 +4,7 @@ import Child from './Child'
 import Button from './Button'
 import Checkbox from './Checkbox'
 import HomeModuleInfo from './HomeModuleInfo';
+import Loader from './loader'
 import { HasError, AlertError, AlertSuccess } from 'vform'
 
 // Components that are registered globaly.
@@ -15,7 +16,8 @@ import { HasError, AlertError, AlertSuccess } from 'vform'
   HasError,
   AlertError,
   AlertSuccess,
-  HomeModuleInfo
+  HomeModuleInfo,
+  Loader
 ].forEach(Component => {
   Vue.component(Component.name, Component)
 })

@@ -9,7 +9,8 @@
       <card v-else :title="$t('register')">
         <form @submit.prevent="register" @keydown="form.onKeydown($event)">
           <!-- Name -->
-          <div class="form-group row">
+
+          <div class="row mb-3">
             <label class="col-md-3 col-form-label text-md-right">{{ $t('name') }}</label>
             <div class="col-md-7">
               <input v-model="form.name" :class="{ 'is-invalid': form.errors.has('name') }" class="form-control" type="text" name="name">
@@ -18,7 +19,7 @@
           </div>
 
           <!-- Email -->
-          <div class="form-group row">
+          <div class="row mb-3">
             <label class="col-md-3 col-form-label text-md-right">{{ $t('email') }}</label>
             <div class="col-md-7">
               <input v-model="form.email" :class="{ 'is-invalid': form.errors.has('email') }" class="form-control" type="email" name="email">
@@ -27,7 +28,7 @@
           </div>
 
           <!-- Password -->
-          <div class="form-group row">
+          <div class="row mb-3">
             <label class="col-md-3 col-form-label text-md-right">{{ $t('password') }}</label>
             <div class="col-md-7">
               <input v-model="form.password" :class="{ 'is-invalid': form.errors.has('password') }" class="form-control" type="password" name="password">
@@ -36,7 +37,7 @@
           </div>
 
           <!-- Password Confirmation -->
-          <div class="form-group row">
+          <div class="row mb-3">
             <label class="col-md-3 col-form-label text-md-right">{{ $t('confirm_password') }}</label>
             <div class="col-md-7">
               <input v-model="form.password_confirmation" :class="{ 'is-invalid': form.errors.has('password_confirmation') }" class="form-control" type="password" name="password_confirmation">
@@ -44,7 +45,7 @@
             </div>
           </div>
 
-          <div class="form-group row">
+          <div class="row mb-3">
             <div class="col-md-7 offset-md-3 d-flex">
               <!-- Submit Button -->
               <v-button :loading="form.busy">

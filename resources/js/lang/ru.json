@@ -13,12 +13,13 @@
   "email": "Email",
   "remember_me": "Запомнить меня",
   "password": "Пароль",
+  "delete": "Удалить",
   "forgot_password": "Забыли пароль?",
   "confirm_password": "Подтвердите пароль",
   "name": "Имя",
   "toggle_navigation": "Переключить навигацию",
-  "home": "Главная",
-  "you_are_logged_in": "Вы вошли в систему!",
+  "index": "Главная",
+  "you_are_logged_in": "Добро пожаловать в систему правления умным домом Home Flow",
   "reset_password": "Сброс пароля",
   "send_password_reset_link": "Отправить ссылку для сброса пароля",
   "settings": "Настройки",
@@ -37,13 +38,48 @@
   "failed_to_verify_email": "Не удалось подтвердить электронную почту.",
   "verify_email_address": "Мы отправили вам электронное письмо со ссылкой для подтверждения.",
   "home_smart": "Умный дом",
-  "all_modules": "Все модули",
+  "all_modules": "Устройства в сети",
   "menu": "Меню",
-  "index": "Главная",
-  "home_settings":{
-    "module": {
-      "title": "Настройка модуля"
+  "home": {
+    "menu": {
+      "index": "Главная",
+      "panel": "Панель управления",
+      "statistics": "Статистика",
+      "create_module": "Добавить модуль"
+    },
+    "settings": {
+      "module": {
+        "create": {
+          "title": "Создание нового модуля"
+        },
+        "update": {
+          "title": "Редактирование модуля"
+        },
+        "form": {
+          "traits": "Трэиты",
+          "type": "Тип",
+          "g_index": "Индекс",
+          "room": "Комната",
+          "ico": "Иконка"
+        }
+      },
+      "room": {
+        "create": {
+          "title": "Создание новой комнаты в доме"
+        },
+        "update": {
+          "title": "Редактирование комнаты в доме"
+        },
+        "form": {
+          "index": "Индекс",
+          "name": "Наименование",
+          "description": "Описание"
+        }
+      }
     }
   },
-  "save": "Сохранить"
+  "save": "Сохранить",
+  "root": {
+    "title": "Система - Информация"
+  }
 }
